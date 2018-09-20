@@ -26,12 +26,12 @@
 脚本使用方法
 ---------
 >传入2个比较设备参数<br>
-'''
+```
 app = CompareApp('WatchGuard Firebox® M440','WatchGuard Firebox® M5600')<br>
 csv = app.get_csv_result()
-'''
+```
 >传入3个比较设备参数<br>
-'''
+```
 app = CompareApp('WatchGuard Firebox® M440','WatchGuard Firebox® M5600','WatchGuard® Firebox T70')<br>
 csv = app.get_csv_result()
-'''
+```
