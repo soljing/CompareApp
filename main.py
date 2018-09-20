@@ -195,6 +195,6 @@ class CompareApp:
                 raise(Exception('产品:%s 输入错误，请输入T/M 相关产品'))
         return compare_url
 
-if __name__ == '__main__':
-    app = CompareApp('WatchGuard Firebox® M440','WatchGuard Firebox® M5600')
-    app.get_csv_result()
+#if __name__ == '__main__':
+#    app = CompareApp('WatchGuard Firebox® M440','WatchGuard Firebox® M5600')
+#    app.get_csv_result()
