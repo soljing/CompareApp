@@ -1,5 +1,6 @@
 #encoding: utf-8
 import os
+import datetime
 import requests
 from bs4 import BeautifulSoup
 
@@ -36,19 +37,21 @@ class CompareApp:
 
     def get_csv_result(self):
         '''
-        输出csv文件路径当前的脚本文件同路径
+        输出csv文件路径与当前的脚本文件同路径
         '''
         compare_result_list = self.__query_compare_result__()
         sort_list = self.__sort_result_by_throughput__(compare_result_list)
         #保存到当前脚本的目录下
         pwd = os.path.split(os.path.realpath(__file__))[0]
-        save_path = os.path.join(pwd,'result.csv')
+        now = datetime.datetime.now()
+        file_name = 'result_' + datetime.datetime.strftime(now,'%Y_%m_%d %H_%M_%S') + '.csv'
+        save_path = os.path.join(pwd,file_name)
         #print(save_path)
         return self.__output_csv__(sort_list,save_path)
 
     def __output_csv__(self,result,save_path):
         '''
-        写csv文件，参数是列表，列表元素是tuple （product_name,performance_dic）
+        写csv文件，参数是列表，列表元素是tuple (product_name,performance_dic)
         '''
         try:
             with open(save_path,mode='w+',encoding='utf-8') as f:
@@ -74,7 +77,7 @@ class CompareApp:
 
     def __query_compare_result__(self):
         '''
-            查询比较产品的性能数据，返回是列表，列表元素是tuple （product_name,performance_dic）
+        查询比较产品的性能数据，返回是列表，列表元素是tuple （product_name,performance_dic）
         '''
         compare_url = self.__create_compare_url__()
         #print(compare_url)
@@ -192,6 +195,6 @@ class CompareApp:
                 raise(Exception('产品:%s 输入错误，请输入T/M 相关产品'))
         return compare_url
 
-# if __name__ == '__main__':
-#     app = CompareApp('WatchGuard Firebox® M440','WatchGuard Firebox® M5600')
-#     app.get_csv_result()
+if __name__ == '__main__':
+    app = CompareApp('WatchGuard Firebox® M440','WatchGuard Firebox® M5600')
+    app.get_csv_result()

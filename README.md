@@ -21,8 +21,9 @@
 ---------
 分为2个文件：
 >main.py是程序实现文件<br>
->unit_test.py是单元测试文件
->result.csv 是输出的文件
+>unit_test.py是单元测试文件<br>
+>result_xxx.csv 是输出的CSV结果文件<br>
+>requirements.txt 程序依赖库说明<br>
 
 脚本使用方法
 ---------
